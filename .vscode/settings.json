@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.connections.sonarqube": [
+    { "serverUrl": "http://192.168.50.4:9000", "token": "votre-token" }
+  ],
+  "sonarlint.connectedMode.project": { "projectKey": "timesheet-sec" }
+}
