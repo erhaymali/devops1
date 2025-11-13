@@ -65,24 +65,29 @@
 	</distributionManagement>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>
-                          <plugin>
-                              <groupId>org.owasp</groupId>
-                              <artifactId>dependency-check-maven</artifactId>
-                              <version>8.4.2</version>
-                              <configuration>
-                              <formats>html,xml</formats>
-                              </configuration>
-                         </plugin> 
-             </plugins>
-	</build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-resources-plugin</artifactId>
+      <version>3.1.0</version>
+    </plugin>
+    <!-- OWASP Dependency-Check -->
+    <plugin>
+      <groupId>org.owasp</groupId>
+      <artifactId>dependency-check-maven</artifactId>
+      <version>12.1.0</version>
+      <configuration>
+        <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+        <nvdDatafeedUrl>https://services.nvd.nist.gov/rest/json/cves/2.0</nvdDatafeedUrl>
+        <nvdApiDelay>6000</nvdApiDelay>
+        <dataDirectory>${env.HOME}/.m2/dependency-check</dataDirectory>
+        <formats>html,xml</formats>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 </project>
