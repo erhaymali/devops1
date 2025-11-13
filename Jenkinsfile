@@ -1,1 +1,1 @@
-(le bloc complet que j’ai donné)
+(pipeline complet 8 stages déjà fourni)
