@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "T_USER")
@@ -25,8 +27,12 @@ public class User implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;   
 	
+	@NotBlank
+	@Size(max = 100)
 	private String firstName; 
 	
+	@NotBlank
+	@Size(max = 100)
 	private String lastName;
 	
 	@Temporal(TemporalType.DATE)
@@ -68,6 +74,13 @@ public class User implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
