@@ -1,7 +1,8 @@
 package tn.esprit.spring.control;
 
-import java.util.Date;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class UserRestControl {
 
 	// Ajouter User : http://localhost:????/timesheet-devops/add-user 
 	@PostMapping("/add-user")
-	public User addUser(@RequestBody User u) {
+	public User addUser(@Valid @RequestBody User u) {
 		User user = userService.addUser(u); 
 		return user;
 	}
@@ -51,7 +52,7 @@ public class UserRestControl {
 	// Modifier User 
 	// http://localhost:????/timesheet-devops/modify-user 
 	@PutMapping("/modify-user") 
-	public User updateUser(@RequestBody User user) {
+	public User updateUser(@Valid @RequestBody User user) {
 		return userService.updateUser(user);
 	}
 	 

@@ -33,12 +33,11 @@ public class UserServiceImpl implements IUserService {
 		User utilisateur = null; 
 
 		try {
-			// TODO Log à ajouter en début de la méthode 
+			l.info("Adding user: {}", u);
 			utilisateur = userRepository.save(u); 
-			// TODO Log à ajouter à la fin de la méthode 
-
+			l.info("User added successfully with id: {}", utilisateur.getId());
 		} catch (Exception e) {
-			// TODO log ici : l....("error in addUser() : " + e);
+			l.error("Error in addUser(): ", e);
 		}
 
 		return utilisateur; 
@@ -52,12 +51,11 @@ public class UserServiceImpl implements IUserService {
 
 		
 		try {
-			// TODO Log à ajouter en début de la méthode 
+			l.info("Updating user: {}", u);
 			userUpdated = userRepository.save(u); 
-			// TODO Log à ajouter à la fin de la méthode 
-
+			l.info("User updated successfully with id: {}", userUpdated.getId());
 		} catch (Exception e) {
-			// TODO log ici : l....("error in updateUser() : " + e);
+			l.error("Error in updateUser(): ", e);
 		}
 
 		return userUpdated; 
@@ -67,12 +65,11 @@ public class UserServiceImpl implements IUserService {
 	public void deleteUser(String id) {
 
 		try {
-			// TODO Log à ajouter en début de la méthode 
+			l.info("Deleting user with id: {}", id);
 			userRepository.deleteById(Long.parseLong(id)); 
-			// TODO Log à ajouter à la fin de la méthode 
-
+			l.info("User deleted successfully with id: {}", id);
 		} catch (Exception e) {
-			// TODO log ici : l....("error in deleteUser() : " + e);
+			l.error("Error in deleteUser(): ", e);
 		}
 
 	}
@@ -82,8 +79,8 @@ public class UserServiceImpl implements IUserService {
 		User u = null;
 		try {
 			u =  userRepository.findById(Long.parseLong(id)).get();
-
 		} catch (Exception e) {
+			l.error("Error in retrieveUser(): ", e);
 		}
 
 		return u;
